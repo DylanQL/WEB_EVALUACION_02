@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicamentos - Sistema de Farmacia</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <!-- Navigation Bar - Loaded from app.js -->
+    <div id="nav-placeholder"></div>
+
+    <!-- Main Content -->
+    <div class="container mt-4">
+        <h2>Gestión de Medicamentos</h2>
+        
+        <!-- Admin/Moderator Actions -->
+        <div id="admin-actions" class="mb-3">
+            <!-- This section will be shown/hidden based on user role -->
+            <button id="btn-add-medicamento" class="btn btn-success mb-3">Agregar Medicamento</button>
+        </div>
+        
+        <!-- Medicamentos Table -->
+        <div class="card">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Descripción</th>
+                                <th>Fabricación</th>
+                                <th>Vencimiento</th>
+                                <th>Presentación</th>
+                                <th>Stock</th>
+                                <th>Precio Unit.</th>
+                                <th>Precio Pres.</th>
+                                <th>Marca</th>
+                                <th>Tipo</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody id="medicamentos-table">
+                            <!-- Medicamentos data will be loaded here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Add/Edit Medicamento Modal -->
+    <div class="modal fade" id="medicamentoModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="medicamentoModalLabel">Agregar Medicamento</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="medicamento-form">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="CodMedicamento" class="form-label">Código</label>
+                                <input type="text" class="form-control" id="CodMedicamento" name="CodMedicamento" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="descripcionMed" class="form-label">Descripción</label>
+                                <input type="text" class="form-control" id="descripcionMed" name="descripcionMed" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="fechaFabricacion" class="form-label">Fecha Fabricación</label>
+                                <input type="date" class="form-control" id="fechaFabricacion" name="fechaFabricacion" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="fechaVencimiento" class="form-label">Fecha Vencimiento</label>
+                                <input type="date" class="form-control" id="fechaVencimiento" name="fechaVencimiento" required>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="presentacion" class="form-label">Presentación</label>
+                                <input type="text" class="form-control" id="presentacion" name="presentacion" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="stock" class="form-label">Stock</label>
+                                <input type="number" class="form-control" id="stock" name="stock" required min="0">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="precioVentaUni" class="form-label">Precio Venta Unitario</label>
+                                <input type="number" class="form-control" id="precioVentaUni" name="precioVentaUni" step="0.01" required min="0">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="precioVentaPres" class="form-label">Precio Venta Presentación</label>
+                                <input type="number" class="form-control" id="precioVentaPres" name="precioVentaPres" step="0.01" required min="0">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="marca" class="form-label">Marca</label>
+                                <input type="text" class="form-control" id="marca" name="marca" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="CodTipoMed" class="form-label">Tipo de Medicamento</label>
+                                <select class="form-select" id="CodTipoMed" name="CodTipoMed" required>
+                                    <!-- Options will be loaded dynamically -->
+                                </select>
+                            </div>
+                        </div>
+                        <input type="hidden" id="isEditMode" value="false">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                            <button type="submit" class="btn btn-primary">Guardar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="/js/app.js"></script>
+    <script src="/js/medicamentos.js"></script>
+</body>
+</html>

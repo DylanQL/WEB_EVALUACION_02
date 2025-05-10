@@ -1,0 +1,75 @@
+/* Main styles for Farmacia App */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+}
+
+.navbar {
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.card {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+    border: none;
+    border-radius: 0.5rem;
+}
+
+.card-header {
+    border-bottom: none;
+    border-top-left-radius: 0.5rem !important;
+    border-top-right-radius: 0.5rem !important;
+}
+
+.btn {
+    border-radius: 0.25rem;
+}
+
+.table {
+    margin-bottom: 0;
+}
+
+/* Login & Registration styles */
+.login-container,
+.register-container {
+    max-width: 500px;
+    margin: 0 auto;
+    padding-top: 50px;
+}
+
+/* Dashboard styles */
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Custom utility classes */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+/* Action buttons */
+.action-buttons {
+    white-space: nowrap;
+}
+
+.action-buttons .btn {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+}
+
+/* Modal customizations */
+.modal-header {
+    background-color: #f8f9fa;
+}
+
+/* Form validations */
+.is-invalid {
+    border-color: #dc3545;
+}
+
+.invalid-feedback {
+    display: block;
+    color: #dc3545;
+}
