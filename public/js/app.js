@@ -10,8 +10,35 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // Setup navigation based on authentication status and user role
 function setupNavigation(token, user) {
-    const navMenu = document.getElementById('nav-menu');
-    const loginSignupContainer = document.getElementById('login-signup-container');
+    // Check if we're in a page with a nav-placeholder
+    const navPlaceholder = document.getElementById('nav-placeholder');
+    if (navPlaceholder) {
+        // Insert the navbar HTML into the placeholder
+        navPlaceholder.innerHTML = `
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <div class="container">
+                    <a class="navbar-brand" href="/">Sistema de Farmacia</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse" id="navbarNav">
+                        <ul class="navbar-nav" id="nav-menu-dynamic">
+                            <!-- Menu items will be dynamically loaded based on user role -->
+                        </ul>
+                        <ul class="navbar-nav ms-auto">
+                            <li class="nav-item" id="login-signup-container-dynamic">
+                                <!-- Login/Signup links will appear here when not logged in -->
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+        `;
+    }
+
+    // Now find the nav elements (either the original ones or the newly created ones)
+    const navMenu = document.getElementById('nav-menu') || document.getElementById('nav-menu-dynamic');
+    const loginSignupContainer = document.getElementById('login-signup-container') || document.getElementById('login-signup-container-dynamic');
     
     if (!navMenu || !loginSignupContainer) return;
     
